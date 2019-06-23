@@ -18,7 +18,7 @@ namespace EBazarUI.Models
         public Product()
         {
             this.Order = new HashSet<Order>();
-            this.ProdcutImages = new HashSet<ProdcutImages>();
+            this.ProdcutImages = new HashSet<ProductImages>();
         }
     
         public int ID { get; set; }
@@ -44,7 +44,7 @@ namespace EBazarUI.Models
         public virtual ICollection<Order> Order { get; set; }
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProdcutImages> ProdcutImages { get; set; }
+        public virtual ICollection<ProductImages> ProdcutImages { get; set; }
         public virtual Vendor Vendor { get; set; }
     }
 }

@@ -1678,6 +1678,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoadDataController.cs" />
     <Compile Include="Controllers\ProdcutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1712,16 +1714,17 @@
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="Models\ProdcutImages.cs">
+    <Compile Include="Models\Product.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs">
+    <Compile Include="Models\ProductImages.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TempShpData.cs" />
     <Compile Include="Models\Vendor.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
@@ -1845,6 +1848,8 @@
     <Content Include="Views\Product\Add.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1855,6 +1860,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ProductImages\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\LoadData\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
