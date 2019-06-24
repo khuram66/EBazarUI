@@ -12,7 +12,7 @@ namespace EBazarUI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProdcutImages
+    public partial class ProductImages
     {
         public int ID { get; set; }
         public string Product_image { get; set; }

@@ -1,4 +1,5 @@
-﻿@model EBazarUI.Models.ProductViewModel
+﻿@using EBazarUI.Models  
+@model ProductViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -152,14 +153,14 @@
                 @Html.ValidationMessageFor(model => model.Modified_On, "", new { @class = "text-danger" })
             </div>
         </div>
-        @foreach (var item in Model.Product_image)
+        @foreach (var items in Model.Product_image)
         {
             <div class="form-group">
-            @Html.LabelFor(modelitem => @item, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(modelitem => items, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*<img src="@Url.Content("" alt="Alternate Text" />*@
-                @*@Html.DisplayFor(modelitem => @item, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(modelitem => @item, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(modelitem => @item, new { htmlAttributes = new { @class = "form-control" } })*@
+                <td><img src="@Url.Content(items.Product_image)" height="8%" alt="Alternate Text" /></td>
+                @Html.ValidationMessageFor(modelitem => items, "", new { @class = "text-danger" })
             </div>
             </div>
         }

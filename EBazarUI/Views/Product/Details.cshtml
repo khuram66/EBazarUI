@@ -1,0 +1,171 @@
+﻿@model EBazarUI.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producct_Short_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producct_Short_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Long_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Long_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Featured)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Featured)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_OnSale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_OnSale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Sale_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Sale_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Feature_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Feature_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendor_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendor_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_On)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_On)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_On)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_On)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -60,7 +60,7 @@ namespace EBazarUI.Controllers
 
                 };
                 db.Products.Add(prod);
-                
+
                 foreach (HttpPostedFileBase file in pvm.ProductImages)
                 {
                     if (file != null)
@@ -71,12 +71,12 @@ namespace EBazarUI.Controllers
                         pvm.Product_image = "~/ProductImages/" + InputImg;
                         var ServerSavePath = Path.Combine(Server.MapPath("~/ProductImages/") + InputImg);
                         file.SaveAs(ServerSavePath);
-                        ProdcutImages pimg = new ProdcutImages
+                        ProductImages pimg = new ProductImages
                         {
                             Product_ID = pvm.ID,
                             Product_image = pvm.Product_image
                         };
-                        db.ProdcutImages.Add(pimg);
+                        db.ProductImages.Add(pimg);
                     }
                     else
                     {
@@ -84,8 +84,8 @@ namespace EBazarUI.Controllers
                     }
                 }
 
-                
-                
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index", "Product");
             }
@@ -95,7 +95,7 @@ namespace EBazarUI.Controllers
         public ActionResult Edit(int? Id)
         {
             Product prod = db.Products.Where(x => x.ID == Id).FirstOrDefault();
-            IEnumerable< ProdcutImages>  pimg = db.ProdcutImages.Where(x => x.Product_ID == Id).ToList();
+            IEnumerable<ProductImages> pimg = db.ProductImages.Where(x => x.Product_ID == Id).ToList();
             ProductViewModel pvm = new ProductViewModel();
             pvm.Product_Name = prod.Product_Name;
             pvm.Producct_Short_Description = prod.Producct_Short_Description;
@@ -114,5 +114,127 @@ namespace EBazarUI.Controllers
             }
             return View(pvm);
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int? Id)
+        //{
+        //    Product prod = db.Products.Where(x => x.ID == Id).FirstOrDefault();
+        //    IEnumerable<ProdcutImages> pimg = db.ProdcutImages.Where(x => x.Product_ID == Id).ToList();
+        //    ProductViewModel pvm = new ProductViewModel();
+        //    pvm.Product_Name = prod.Product_Name;
+        //    pvm.Producct_Short_Description = prod.Producct_Short_Description;
+        //    pvm.Product_Long_Description = prod.Product_Long_Description;
+        //    pvm.Product_Price = prod.Product_Price;
+        //    pvm.Product_Sale_Price = prod.Product_Sale_Price;
+        //    pvm.Product_Quantity = prod.Product_Quantity;
+        //    pvm.Is_OnSale = prod.Is_OnSale;
+        //    pvm.Is_Active = prod.Is_Active;
+        //    pvm.Is_Featured = prod.Is_Featured;
+        //    pvm.Category_ID = prod.Category_ID;
+        //    pvm.Product_Feature_Image = prod.Product_Feature_Image;
+        //    foreach (var proimg in pimg)
+        //    {
+        //        pvm.Product_image = proimg.Product_image;
+        //    }
+        //    return View(pvm);
+        //}
+
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            IEnumerable<ProductImages> pimg = db.ProductImages.Where(x => x.Product_ID == id).ToList();
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                ProductViewModel pvm = new ProductViewModel();
+                pvm.Product_Name = product.Product_Name;
+                pvm.Producct_Short_Description = product.Producct_Short_Description;
+                pvm.Product_Long_Description = product.Product_Long_Description;
+                pvm.Product_Price = product.Product_Price;
+                pvm.Product_Sale_Price = product.Product_Sale_Price;
+                pvm.Product_Quantity = product.Product_Quantity;
+                pvm.Is_OnSale = product.Is_OnSale;
+                pvm.Is_Active = product.Is_Active;
+                pvm.Is_Featured = product.Is_Featured;
+                pvm.Category_ID = product.Category_ID;
+                pvm.Product_Feature_Image = product.Product_Feature_Image;
+                foreach (var proimg in pimg)
+                {
+                    pvm.Product_image = proimg.Product_image;
+                }
+                return View(pvm);
+            }
+
+        }
+
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            IEnumerable<ProductImages> pimg = db.ProductImages.Where(x => x.Product_ID == id).ToList();
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                ProductViewModel pvm = new ProductViewModel();
+                pvm.Product_Name = product.Product_Name;
+                pvm.Producct_Short_Description = product.Producct_Short_Description;
+                pvm.Product_Long_Description = product.Product_Long_Description;
+                pvm.Product_Price = product.Product_Price;
+                pvm.Product_Sale_Price = product.Product_Sale_Price;
+                pvm.Product_Quantity = product.Product_Quantity;
+                pvm.Is_OnSale = product.Is_OnSale;
+                pvm.Is_Active = product.Is_Active;
+                pvm.Is_Featured = product.Is_Featured;
+                pvm.Category_ID = product.Category_ID;
+                pvm.Product_Feature_Image = product.Product_Feature_Image;
+                foreach (var proimg in pimg)
+                {
+                    pvm.Product_image = proimg.Product_image;
+                }
+                return View(pvm);
+            }
+
+        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[ActionName ("Delete")]
+        //public ActionResult DeleteConfirm(int? id)
+        //{
+        //    IEnumerable<ProductImages> pimg = db.ProductImages.Where(x => x.Product_ID == id).ToList();
+        //    Product product = db.Products.Find(id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    else
+        //    {
+        //        ProductViewModel pvm = new ProductViewModel();
+        //        pvm.Product_Name = product.Product_Name;
+        //        pvm.Producct_Short_Description = product.Producct_Short_Description;
+        //        pvm.Product_Long_Description = product.Product_Long_Description;
+        //        pvm.Product_Price = product.Product_Price;
+        //        pvm.Product_Sale_Price = product.Product_Sale_Price;
+        //        pvm.Product_Quantity = product.Product_Quantity;
+        //        pvm.Is_OnSale = product.Is_OnSale;
+        //        pvm.Is_Active = product.Is_Active;
+        //        pvm.Is_Featured = product.Is_Featured;
+        //        pvm.Category_ID = product.Category_ID;
+        //        pvm.Product_Feature_Image = product.Product_Feature_Image;
+        //        foreach (var proimg in pimg)
+        //        {
+        //            pvm.Product_image = proimg.Product_image;
+        //        }
+        //        return View(pvm);
+        //    }
+
+        //}
     }
 }

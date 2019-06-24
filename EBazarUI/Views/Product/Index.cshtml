@@ -63,9 +63,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Product_Quantity)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Product_Feature_Image)
-                            </td>
+                            
+                            <td><img src="@Url.Content(item.Product_Feature_Image)" height="8%" alt="Alternate Text" /></td>
+                            
                             <td>
                                 @Html.DisplayFor(modelItem => item.Category.Category_Name)
                             </td>

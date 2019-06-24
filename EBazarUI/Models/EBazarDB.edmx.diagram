@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="ECommerceModel.OrderDetail" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ECommerceModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ECommerceModel.Category" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.ProdcutImages" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.ProductImages" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ECommerceModel.Product" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ECommerceModel.Vendor" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="ECommerceModel.FK_Order_Customers" ManuallyRouted="false" />

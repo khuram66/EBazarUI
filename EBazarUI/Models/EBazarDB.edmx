@@ -325,7 +325,7 @@
           <Property Name="Is_Active" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_TBL_PRODUCTS_TBL_CATEGORIES" FromRole="TBL_Categories" ToRole="TBL_Products" />
         </EntityType>
-        <EntityType Name="ProdcutImages">
+        <EntityType Name="ProductImages">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -436,7 +436,7 @@
         </Association>
         <Association Name="FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS">
           <End Role="TBL_Products" Type="ECommerceModel.Product" Multiplicity="0..1" />
-          <End Role="TBL_ProdcutImages" Type="ECommerceModel.ProdcutImages" Multiplicity="*" />
+          <End Role="TBL_ProdcutImages" Type="ECommerceModel.ProductImages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBL_Products">
               <PropertyRef Name="ID" />
@@ -464,7 +464,7 @@
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Categories" EntityType="ECommerceModel.Category" />
-          <EntitySet Name="ProdcutImages" EntityType="ECommerceModel.ProdcutImages" />
+          <EntitySet Name="ProductImages" EntityType="ECommerceModel.ProductImages" />
           <EntitySet Name="Products" EntityType="ECommerceModel.Product" />
           <EntitySet Name="Vendors" EntityType="Self.Vendor" />
           <AssociationSet Name="FK_Order_Customers" Association="Self.FK_Order_Customers">
@@ -485,7 +485,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS" Association="Self.FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS">
             <End Role="TBL_Products" EntitySet="Products" />
-            <End Role="TBL_ProdcutImages" EntitySet="ProdcutImages" />
+            <End Role="TBL_ProdcutImages" EntitySet="ProductImages" />
           </AssociationSet>
           <AssociationSet Name="FK_TBL_Products_Vendor" Association="Self.FK_TBL_Products_Vendor">
             <End Role="Vendor" EntitySet="Vendors" />
@@ -577,8 +577,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProdcutImages">
-            <EntityTypeMapping TypeName="ECommerceModel.ProdcutImages">
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="ECommerceModel.ProductImages">
               <MappingFragment StoreEntitySet="TBL_ProdcutImages">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Product_image" ColumnName="Product_image" />
