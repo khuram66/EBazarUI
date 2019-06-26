@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="ID" />
@@ -26,6 +26,19 @@
           <Property Name="Created" Type="date" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MainSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+          <Property Name="AltText" Type="varchar" MaxLength="255" />
+          <Property Name="OfferTag" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="BtnText" Type="varchar" MaxLength="50" />
+          <Property Name="isDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -59,6 +72,18 @@
           <Property Name="Discount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="OrderDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PromoRight">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+          <Property Name="AltText" Type="varchar" MaxLength="500" />
+          <Property Name="OfferTag" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="isDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -170,6 +195,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PromoRight_Categories">
+          <End Role="TBL_Categories" Type="Self.TBL_Categories" Multiplicity="1" />
+          <End Role="PromoRight" Type="Self.PromoRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_Categories">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PromoRight">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS">
           <End Role="TBL_Products" Type="Self.TBL_Products" Multiplicity="0..1" />
           <End Role="TBL_ProdcutImages" Type="Self.TBL_ProdcutImages" Multiplicity="*" />
@@ -208,8 +245,10 @@
         </Association>
         <EntityContainer Name="ECommerceModelStoreContainer">
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainSlider" EntityType="Self.MainSlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromoRight" EntityType="Self.PromoRight" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_Categories" EntityType="Self.TBL_Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBL_ProdcutImages" EntityType="Self.TBL_ProdcutImages" Schema="dbo" store:Type="Tables" />
@@ -227,6 +266,10 @@
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_PromoRight_Categories" Association="Self.FK_PromoRight_Categories">
+            <End Role="TBL_Categories" EntitySet="TBL_Categories" />
+            <End Role="PromoRight" EntitySet="PromoRight" />
+          </AssociationSet>
           <AssociationSet Name="FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS" Association="Self.FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS">
             <End Role="TBL_Products" EntitySet="TBL_Products" />
             <End Role="TBL_ProdcutImages" EntitySet="TBL_ProdcutImages" />
@@ -240,8 +283,7 @@
             <End Role="TBL_Products" EntitySet="TBL_Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ECommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -324,6 +366,7 @@
           <Property Name="Category_Image_Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Is_Active" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_TBL_PRODUCTS_TBL_CATEGORIES" FromRole="TBL_Categories" ToRole="TBL_Products" />
+          <NavigationProperty Name="PromoRights" Relationship="ECommerceModel.FK_PromoRight_Categories" FromRole="Category" ToRole="PromoRight" />
         </EntityType>
         <EntityType Name="ProductImages">
           <Key>
@@ -491,7 +534,51 @@
             <End Role="Vendor" EntitySet="Vendors" />
             <End Role="TBL_Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="MainSliders" EntityType="ECommerceModel.MainSlider" />
+          <EntitySet Name="PromoRights" EntityType="ECommerceModel.PromoRight" />
+          <AssociationSet Name="FK_PromoRight_Categories" Association="ECommerceModel.FK_PromoRight_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="PromoRight" EntitySet="PromoRights" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MainSlider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AltText" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OfferTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BtnText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PromoRight">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AltText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OfferTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="ECommerceModel.FK_PromoRight_Categories" FromRole="PromoRight" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK_PromoRight_Categories">
+          <End Type="ECommerceModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ECommerceModel.PromoRight" Role="PromoRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PromoRight">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -632,6 +719,33 @@
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainSliders">
+            <EntityTypeMapping TypeName="ECommerceModel.MainSlider">
+              <MappingFragment StoreEntitySet="MainSlider">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="BtnText" ColumnName="BtnText" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OfferTag" ColumnName="OfferTag" />
+                <ScalarProperty Name="AltText" ColumnName="AltText" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromoRights">
+            <EntityTypeMapping TypeName="ECommerceModel.PromoRight">
+              <MappingFragment StoreEntitySet="PromoRight">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OfferTag" ColumnName="OfferTag" />
+                <ScalarProperty Name="AltText" ColumnName="AltText" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

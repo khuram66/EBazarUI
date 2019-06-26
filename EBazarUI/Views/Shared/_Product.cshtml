@@ -1,33 +1,41 @@
-﻿@model Khareedo.Models.Product
+﻿@model EBazarUI.Models.ProductViewModel
+
 <li>
     <figure>
-        <a class="aa-product-img" href="@Url.Action("ViewDetails", "Product", new { id = Model.ProductID })"><img src="@Model.ImageURL" alt="@Model.AltText"></a>
-        <a class="aa-add-card-btn" href="@(Session["username"] != null ? Url.Action("AddToCart", "Product", new { id = @Model.ProductID}) : Url.Action("Login", "Account"))"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+        <a class="aa-product-img" href="@Url.Action("ViewDetails", "Product", new { id = Model.ID })"><img src="@Model.Product_Feature_Image" alt=""></a>
+        <a class="aa-add-card-btn" href="@(Session["username"] != null ? Url.Action("AddToCart", "Product", new { id = @Model.ID}) : Url.Action("Login", "Account"))"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
         <figcaption>
-            <h4 class="aa-product-title"><a href="#">@Model.Name</a></h4>
-            <span class="aa-product-price">Rs. @Model.UnitPrice</span><span class="aa-product-old-price">
-                <del>
-                @if(Model.OldPrice!=null)
-                {
-                     <text>Rs. @Model.OldPrice</text>
-                }
-                </del>
-            </span>
+            <h4 class="aa-product-title"><a href="#">@Model.Product_Name</a></h4>
+            @if (Model.Product_Sale_Price != null)
+            {
+                <span class="aa-product-price">Rs. @Model.Product_Sale_Price</span><span class="aa-product-old-price">
+                    <del>
+                        @if (Model.Product_Price != null)
+                        {
+                            <text>Rs. @Model.Product_Price</text>
+                        }
+                    </del>
+                </span>
+            }
+            else
+            {
+                <span class="aa-product-price">Rs. @Model.Product_Sale_Price</span>
+            }
         </figcaption>
     </figure>
     <div class="aa-product-hvr-content">
-        <a href="@(Session["username"]!=null ? Url.Action("WishList","Product", new {id=@Model.ProductID }) :Url.Action("Login","Account"))" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-        <a href="@Url.Action("ViewDetails", "Product", new { id = Model.ProductID })" title="View Details" data-toggle="tooltip" data-placement="top"><span class="fa fa-info"></span></a>
+        <a href="@(Session["username"]!=null ? Url.Action("WishList","Product", new {id=@Model.ID }) :Url.Action("Login","Account"))" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
+        <a href="@Url.Action("ViewDetails", "Product", new { id = Model.ID })" title="View Details" data-toggle="tooltip" data-placement="top"><span class="fa fa-info"></span></a>
 
         
     </div>
-    @if (Model.AddBadge == true)
+    @*@if (Model.AddBadge == true)
     {
          <span class="aa-badge  @Model.OfferBadgeClass" href="#">@Model.OfferTitle</span>
     }
     @{
         TempData["returnURL"] = Request.RawUrl;
-        }
+     }*@
 
 </li>
 

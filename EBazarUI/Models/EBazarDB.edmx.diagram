@@ -19,6 +19,9 @@
         <AssociationConnector Association="ECommerceModel.FK_TBL_PRODUCTS_TBL_CATEGORIES" ManuallyRouted="false" />
         <AssociationConnector Association="ECommerceModel.FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS" ManuallyRouted="false" />
         <AssociationConnector Association="ECommerceModel.FK_TBL_Products_Vendor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ECommerceModel.MainSlider" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="ECommerceModel.PromoRight" Width="1.5" PointX="3" PointY="14.5" />
+        <AssociationConnector Association="ECommerceModel.FK_PromoRight_Categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,7 +17,8 @@ namespace EBazarUI.Controllers
             ViewBag.WomenProduct = db.Products.Where(x => x.Category.Category_Name.Equals("Women")).ToList();
             ViewBag.SportsProduct = db.Products.Where(x => x.Category.Category_Name.Equals("Sports")).ToList();
             ViewBag.ElectronicsProduct = db.Products.Where(x => x.Category.Category_Name.Equals("Phones")).ToList();
-            //ViewBag.Slider = db.genMainSliders.ToList();
+            ViewBag.Slider = db.MainSliders.ToList();
+            ViewBag.PromoRight = db.PromoRights.ToList();
             this.GetDefaultData();
             return View();
         }

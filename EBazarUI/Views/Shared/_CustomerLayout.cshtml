@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Khareedo.pk | @ViewBag.Title</title>
-
+    <title>EBazar.pk | @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    
+    @Styles.Render("~/Content/css")
+    @*<link href="~/Content/css?v=" rel="stylesheet" />*@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <script src="~/Content/js/jquery.min.js"></script>
@@ -180,20 +181,20 @@
                         <ul class="nav navbar-nav">
                             <li><a href="@Url.Action("Index","Home")">Home</a></li>
                             @{
-                                Khareedo.Models.KhareedoEntities db = new Khareedo.Models.KhareedoEntities();
+                                EBazarUI.Models.ECommerceDBEntities db = new EBazarUI.Models.ECommerceDBEntities();
                                 Dictionary<string, IEnumerable<string>> navbar = new Dictionary<string, IEnumerable<string>>();
 
-                                List<Khareedo.Models.Category> Categories = db.Categories.ToList();
-                                foreach (Khareedo.Models.Category cat in Categories)
-                                {
-                                    IEnumerable<string> subCat = db.SubCategories.Where(x => x.CategoryID == cat.CategoryID).Select(x => x.Name).ToList();
-                                    navbar.Add(cat.Name, subCat);
-                                }
+                                List<EBazarUI.Models.Category> Categories = db.Categories.ToList();
+                                //foreach (EBazarUI.Models.Category cat in Categories)
+                                //{
+                                //    IEnumerable<string> subCat = db.SubCategories.Where(x => x.CategoryID == cat.CategoryID).Select(x => x.Name).ToList();
+                                //    navbar.Add(cat.Name, subCat);
+                                //}
                                 int count=0;
                                 foreach (KeyValuePair<string,IEnumerable<string>> nav in navbar)
                                 {
                                     if (count < 8)
-                                    {                               
+                                    {
                                     <li>
                                         <a href="">@nav.Key<span class="caret"></span></a> 
                                         <ul class="dropdown-menu">
@@ -292,7 +293,7 @@
                                             <address>
                                                 <p>Suit#007, Sharae Faisal ,Karachi</p>
                                                 <p><span class="fa fa-phone"></span>021-6558-6588</p>
-                                                <p><span class="fa fa-envelope"></span>help@Khareedo.com.pk</p>
+                                                <p><span class="fa fa-envelope"></span>help@EBazar.com.pk</p>
                                             </address>
                                             <div class="aa-footer-social">
                                                 <a href="#"><span class="fa fa-facebook"></span></a>
@@ -315,7 +316,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="aa-footer-bottom-area">
-                            <p>Designed by <a href="http://www.facebook.com/zulfiqar.akram366">Zulfiqar Akram</a></p>
+                            <p>Designed by <a href="#">Khuram & Attique</a></p>
                             <div class="aa-footer-payment">
                                 <span class="fa fa-cc-mastercard"></span>
                                 <span class="fa fa-cc-visa"></span>
@@ -331,6 +332,7 @@
     <!-- / footer -->
    
     @Scripts.Render("~/Content/js")
+    @*<script src="~/Content/js?version=2"></script>*@
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">

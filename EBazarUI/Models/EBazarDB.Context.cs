@@ -33,5 +33,7 @@ namespace EBazarUI.Models
         public virtual DbSet<ProductImages> ProductImages { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<MainSlider> MainSliders { get; set; }
+        public virtual DbSet<PromoRight> PromoRights { get; set; }
     }
 }
