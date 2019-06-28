@@ -1687,6 +1687,7 @@
       <DependentUpon>EBazarDB.edmx</DependentUpon>
       <LastGenOutput>EBazarDB.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\EBazarDB.edmx.sql" />
     <Content Include="Models\EBazarDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EBazarDB.edmx</DependentUpon>
