@@ -1,7 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "EBazar Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
 <!-- Start slider -->
@@ -68,7 +68,7 @@
                                             <img src="@item.ImageURL" alt="@item.AltText">
                                             <div class="aa-prom-content">
                                                 <span>@item.OfferTag</span>
-                                                <h4><a href="@Url.Action("GetProductsByCategory", "Product", new { @categoryName = @item.Category.Name })">@item.Title</a></h4>
+                                                <h4><a href="@Url.Action("GetProductsByCategory", "Product", new { @categoryName = @item.Category.Category_Name})">@item.Title</a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +208,7 @@
                                                         <div class="aa-prod-quantity">
                                                             <form action="">
                                                                 <select name="" id="">
-                                                                    <option value="0" selected="1">1</option>
+                                                                    <option value="0" selected>1</option>
                                                                     <option value="1">2</option>
                                                                     <option value="2">3</option>
                                                                     <option value="3">4</option>

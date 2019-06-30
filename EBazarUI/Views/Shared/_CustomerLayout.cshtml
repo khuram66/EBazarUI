@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Web.Optimization
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EBazar.pk | @ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/css")
     @*<link href="~/Content/css?v=" rel="stylesheet" />*@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -121,7 +120,7 @@
                                 <!-- Text based logo -->
                                 <a href="@Url.Action("Index","Home")">
                                     <span class="fa fa-shopping-cart"></span>
-                                    <p>Khareedo<strong>.pk</strong> <span>Your Shopping Partner</span></p>
+                                    <p>E-Bazar<strong>.pk</strong> <span>Your Shopping Partner</span></p>
                                 </a>
                                 <!-- img based logo -->
                                 <!-- <a href="index.html"><img src="~/Content/img/logo.jpg" alt="logo img"></a> -->
@@ -185,11 +184,11 @@
                                 Dictionary<string, IEnumerable<string>> navbar = new Dictionary<string, IEnumerable<string>>();
 
                                 List<EBazarUI.Models.Category> Categories = db.Categories.ToList();
-                                //foreach (EBazarUI.Models.Category cat in Categories)
-                                //{
-                                //    IEnumerable<string> subCat = db.SubCategories.Where(x => x.CategoryID == cat.CategoryID).Select(x => x.Name).ToList();
-                                //    navbar.Add(cat.Name, subCat);
-                                //}
+                                foreach (EBazarUI.Models.Category cat in Categories)
+                                {
+                                    IEnumerable<string> subCat = db.SubCategories.Where(x => x.CategoryID == cat.ID).Select(x => x.Name).ToList();
+                                    navbar.Add(cat.Category_Name, subCat);
+                                }
                                 int count=0;
                                 foreach (KeyValuePair<string,IEnumerable<string>> nav in navbar)
                                 {

@@ -12,26 +12,24 @@ namespace EBazarUI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class ShippingDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public ShippingDetail()
         {
-            this.Product = new HashSet<Product>();
-            this.PromoRight = new HashSet<PromoRight>();
-            this.SubCategories = new HashSet<SubCategory>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ID { get; set; }
-        public string Category_Name { get; set; }
-        public string Category_Image_Path { get; set; }
-        public string Is_Active { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Mobile { get; set; }
+        public string Address { get; set; }
+        public string Province { get; set; }
+        public string City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PromoRight> PromoRight { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

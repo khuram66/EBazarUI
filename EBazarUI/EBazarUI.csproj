@@ -96,6 +96,14 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -1683,14 +1691,16 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\EBazarDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EBazarDB.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EBazarDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EBazarDB.edmx.sql" />
-    <Content Include="Models\EBazarDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+    <Content Include="Models\EBazarDB.edmx.diagram">
       <DependentUpon>EBazarDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EBazarDB.tt">
+      <DependentUpon>EBazarDB.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EBazarDB.cs</LastGenOutput>
     </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
@@ -1700,9 +1710,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoadDataController.cs" />
-    <Compile Include="Controllers\ProdcutController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\WishListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1715,19 +1728,19 @@
     </Compile>
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\EBazarDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>EBazarDB.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\EBazarDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>EBazarDB.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\EBazarDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>EBazarDB.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\MainSlider.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
@@ -1739,24 +1752,47 @@
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentType.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProductImages.cs">
+    <Compile Include="Models\ProductImage.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\PromoRight.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecentlyView.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Review.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShippingDetail.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubCategory.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TempShpData.cs" />
+    <Compile Include="Models\TopSoldProductModel.cs" />
     <Compile Include="Models\Vendor.cs">
       <DependentUpon>EBazarDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VendorViewModel.cs" />
+    <Compile Include="Models\Wishlist.cs">
+      <DependentUpon>EBazarDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WishListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1766,13 +1802,6 @@
     </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\EBazarDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EBazarDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EBazarDB.edmx.diagram">
-      <DependentUpon>EBazarDB.edmx</DependentUpon>
     </Content>
     <Content Include="AdminPanel\.gitignore" />
     <Content Include="AdminPanel\.travis.yml" />
@@ -1879,7 +1908,7 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Product\ViewDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1890,10 +1919,19 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ProductImages\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\CheckOut\" />
     <Folder Include="Views\LoadData\" />
+    <Folder Include="Views\WishList\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\EBazarDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EBazarDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

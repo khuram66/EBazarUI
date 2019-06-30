@@ -4,24 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a07e81dbeae4588a49deb643d4fb927" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="ECommerceModel.Customer" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.Order" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.OrderDetail" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.sysdiagram" Width="1.5" PointX="0.875" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.Category" Width="1.5" PointX="0.875" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.ProductImages" Width="1.5" PointX="0.875" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.Product" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ECommerceModel.Vendor" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <AssociationConnector Association="ECommerceModel.FK_Order_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="ECommerceModel.FK_Order_TBL_Products" ManuallyRouted="false" />
-        <AssociationConnector Association="ECommerceModel.FK_OrderDetails_Order" ManuallyRouted="false" />
+      <Diagram DiagramId="b9e87409f4ce4707b83ee094807b8ded" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="ECommerceModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Category" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="ECommerceModel.FK_TBL_PRODUCTS_TBL_CATEGORIES" ManuallyRouted="false" />
-        <AssociationConnector Association="ECommerceModel.FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS" ManuallyRouted="false" />
-        <AssociationConnector Association="ECommerceModel.FK_TBL_Products_Vendor" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ECommerceModel.MainSlider" Width="1.5" PointX="5.125" PointY="8.125" />
-        <EntityTypeShape EntityType="ECommerceModel.PromoRight" Width="1.5" PointX="0.875" PointY="8.125" />
+        <EntityTypeShape EntityType="ECommerceModel.Customer" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ECommerceModel.Order" Width="1.5" PointX="13.25" PointY="0.75" />
+        <EntityTypeShape EntityType="ECommerceModel.OrderDetail" Width="1.5" PointX="11" PointY="1.75" />
+        <EntityTypeShape EntityType="ECommerceModel.Vendor" Width="1.5" PointX="2.5" PointY="8.375" />
+        <AssociationConnector Association="ECommerceModel.FK_OrderDetails_Order" />
+        <AssociationConnector Association="ECommerceModel.FK_Order_TBL_Products" />
+        <AssociationConnector Association="ECommerceModel.FK_Order_Customers" />
+        <AssociationConnector Association="ECommerceModel.FK_TBL_Products_Vendor" />
+        <EntityTypeShape EntityType="ECommerceModel.MainSlider" Width="1.5" PointX="5.375" PointY="10" />
+        <EntityTypeShape EntityType="ECommerceModel.PromoRight" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="ECommerceModel.ProductImage" Width="1.5" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="ECommerceModel.FK_PromoRight_Categories" />
+        <AssociationConnector Association="ECommerceModel.FK_TBL_PRODUCT_IMAGES_TBL_PRODUCTS1" />
+        <EntityTypeShape EntityType="ECommerceModel.SubCategory" Width="1.5" PointX="3" PointY="18.375" />
+        <AssociationConnector Association="ECommerceModel.FK_SubCategory_Categories" />
+        <EntityTypeShape EntityType="ECommerceModel.RecentlyView" Width="1.5" PointX="8.25" PointY="7.25" />
+        <EntityTypeShape EntityType="ECommerceModel.Review" Width="1.5" PointX="8.25" PointY="10.75" />
+        <AssociationConnector Association="ECommerceModel.FK_Review_Customers" />
+        <AssociationConnector Association="ECommerceModel.FK_SubCategory_Customers" />
+        <AssociationConnector Association="ECommerceModel.FK_RecentlyViews_Products" />
+        <AssociationConnector Association="ECommerceModel.FK_Review_Products" />
+        <EntityTypeShape EntityType="ECommerceModel.Wishlist" Width="1.5" PointX="11.25" PointY="5.375" />
+        <AssociationConnector Association="ECommerceModel.FK_Wishlist_Customers" />
+        <AssociationConnector Association="ECommerceModel.FK_Wishlist_Products" />
+        <EntityTypeShape EntityType="ECommerceModel.Payment" Width="1.5" PointX="12.625" PointY="9" />
+        <EntityTypeShape EntityType="ECommerceModel.PaymentType" Width="1.5" PointX="10.375" PointY="9.25" />
+        <AssociationConnector Association="ECommerceModel.FK_Payment_PaymentType" />
+        <EntityTypeShape EntityType="ECommerceModel.ShippingDetail" Width="1.5" PointX="7.375" PointY="1" />
+        <AssociationConnector Association="ECommerceModel.FK_Order_ShippingDetail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
