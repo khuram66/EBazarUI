@@ -18,9 +18,6 @@ namespace EBazarUI.Models
         public Customer()
         {
             this.Order = new HashSet<Order>();
-            this.Review = new HashSet<Review>();
-            this.RecentlyView = new HashSet<RecentlyView>();
-            this.Wishlist = new HashSet<Wishlist>();
         }
     
         public int ID { get; set; }
@@ -43,11 +40,5 @@ namespace EBazarUI.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Review> Review { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RecentlyView> RecentlyView { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wishlist> Wishlist { get; set; }
     }
 }

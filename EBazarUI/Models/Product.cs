@@ -18,10 +18,7 @@ namespace EBazarUI.Models
         public Product()
         {
             this.Order = new HashSet<Order>();
-            this.ProductImage = new HashSet<ProductImage>();
-            this.RecentlyView = new HashSet<RecentlyView>();
-            this.Review = new HashSet<Review>();
-            this.Wishlist = new HashSet<Wishlist>();
+            this.ProdcutImages = new HashSet<ProductImages>();
         }
     
         public int ID { get; set; }
@@ -43,17 +40,11 @@ namespace EBazarUI.Models
         public Nullable<System.DateTime> Created_On { get; set; }
         public Nullable<System.DateTime> Modified_On { get; set; }
     
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductImages> ProdcutImages { get; set; }
         public virtual Vendor Vendor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductImage> ProductImage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RecentlyView> RecentlyView { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Review> Review { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wishlist> Wishlist { get; set; }
     }
 }

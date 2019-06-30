@@ -36,12 +36,10 @@ namespace EBazarUI.Models
         public Nullable<bool> CancelOrder { get; set; }
         public Nullable<int> ProductID { get; set; }
         public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> ShippingDetail_ID { get; set; }
     
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual ShippingDetail ShippingDetail { get; set; }
     }
 }

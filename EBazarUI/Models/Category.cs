@@ -18,8 +18,7 @@ namespace EBazarUI.Models
         public Category()
         {
             this.Product = new HashSet<Product>();
-            this.PromoRight = new HashSet<PromoRight>();
-            this.SubCategories = new HashSet<SubCategory>();
+            this.PromoRights = new HashSet<PromoRight>();
         }
     
         public int ID { get; set; }
@@ -30,8 +29,6 @@ namespace EBazarUI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PromoRight> PromoRight { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
+        public virtual ICollection<PromoRight> PromoRights { get; set; }
     }
 }

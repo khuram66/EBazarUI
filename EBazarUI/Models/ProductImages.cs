@@ -12,15 +12,12 @@ namespace EBazarUI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Payment
+    public partial class ProductImages
     {
-        public int PaymentID { get; set; }
-        public Nullable<int> PaymentType_ID { get; set; }
-        public Nullable<decimal> CreditAmount { get; set; }
-        public Nullable<decimal> DebitAmount { get; set; }
-        public Nullable<decimal> Balance { get; set; }
-        public Nullable<System.DateTime> PaymentDateTime { get; set; }
+        public int ID { get; set; }
+        public string Product_image { get; set; }
+        public Nullable<int> Product_ID { get; set; }
     
-        public virtual PaymentType PaymentType { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

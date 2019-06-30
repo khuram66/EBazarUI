@@ -31,7 +31,7 @@ namespace EBazarUI.Models
         public virtual ICollection<Order> Order { get; set; }
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<ProductImage> ProdcutImages { get; set; }
+        public virtual ICollection<ProductImages> ProdcutImages { get; set; }
         public virtual Vendor Vendor { get; set; }
 
         public string Product_image { get; set; }
